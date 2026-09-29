@@ -1850,3 +1850,11 @@ kbd.on-accent {
 .edge-label {
   cursor: default;
 }
+.menubar-brand {
+  gap: 6px;
+  padding-right: 10px;
+}
+.menubar-name {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}

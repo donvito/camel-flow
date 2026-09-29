@@ -5,9 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.camelviewer</groupId>
-  <artifactId>camel-workflow-viewer</artifactId>
+  <artifactId>camelflow</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <name>Camel Workflow Viewer</name>
+  <name>CamelFlow</name>
   <description>High-level viewer for Apache Camel YAML DSL routes</description>
 
   <properties>
@@ -39,7 +39,7 @@
   </dependencies>
 
   <build>
-    <finalName>camel-workflow-viewer</finalName>
+    <finalName>camelflow</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

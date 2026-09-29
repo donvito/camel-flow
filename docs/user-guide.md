@@ -15,7 +15,7 @@ You can load routes in two ways, and mix them:
 
 | | How | Updates |
 |---|---|---|
-| **A folder or file** | `java -jar camel-workflow-viewer.jar ./routes` | Every `*.yaml` / `*.yml` below it is loaded, including sub-folders. Hidden folders, `target`, `build` and `node_modules` are skipped. Saving a file refreshes the diagram within about a second. |
+| **A folder or file** | `java -jar camelflow.jar ./routes` | Every `*.yaml` / `*.yml` below it is loaded, including sub-folders. Hidden folders, `target`, `build` and `node_modules` are skipped. Saving a file refreshes the diagram within about a second. |
 | **Opened files** | **File › Open YAML files…** (⌘/Ctrl+O), or drag files onto the window | Each new file is shown on its own straight away. Opening a file with the same name again replaces it. Opened files are kept in memory until you close them or restart. |
 
 **Closing a file:**

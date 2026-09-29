@@ -14,15 +14,15 @@ import java.util.Locale;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * {@code java -jar camel-workflow-viewer.jar [dir|file] [--port 8080] [--host 127.0.0.1] [--view executive|technical] [--no-open]}
+ * {@code java -jar camelflow.jar [dir|file] [--port 8080] [--host 127.0.0.1] [--view executive|technical] [--no-open]}
  * Without a folder the viewer starts empty and files are opened or dropped in the browser.
  */
 public final class Main {
 
     private static final String USAGE = """
-            Camel Workflow Viewer — high-level diagrams of Apache Camel YAML routes
+            CamelFlow — high-level diagrams of Apache Camel YAML routes
 
-            Usage: java -jar camel-workflow-viewer.jar [folder-or-file] [options]
+            Usage: java -jar camelflow.jar [folder-or-file] [options]
 
               folder-or-file      Camel YAML routes to show and watch for changes (sub-folders included).
                                   Optional: without it the viewer starts empty; open or drop
@@ -91,7 +91,7 @@ public final class Main {
         var g = graphs.graph();
         String shownHost = host.equals("0.0.0.0") ? "localhost" : host;
         String url = "http://" + shownHost + ":" + actualPort + "/";
-        System.out.println("Camel Workflow Viewer " + version());
+        System.out.println("CamelFlow " + version());
         if (root != null) {
             System.out.println("  Routes folder : " + root);
             System.out.println("  Found         : " + g.routes().size() + " routes in " + g.files().size() + " files"

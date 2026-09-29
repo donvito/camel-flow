@@ -4,7 +4,7 @@
 
 | Command | Result |
 |---|---|
-| `mvn package` | Builds the React UI (Maven downloads its own Node), runs the tests, and writes `target/camel-workflow-viewer.jar` |
+| `mvn package` | Builds the React UI (Maven downloads its own Node), runs the tests, and writes `target/camelflow.jar` |
 | `mvn -Dskip.frontend test` | Java only, which is quicker when you haven't touched the UI |
 
 The jar is self-contained, about 3 MB. Its only runtime dependency is Jackson YAML, and it targets Java 17.
@@ -12,8 +12,8 @@ The jar is self-contained, about 3 MB. Its only runtime dependency is Jackson YA
 ## Running while developing
 
 ```bash
-java -jar target/camel-workflow-viewer.jar samples/ai-support-workflow --no-open   # API on :8080
-cd frontend && npm install && npm run dev                                        # UI on :5173 with hot reload
+java -jar target/camelflow.jar samples/ai-support-workflow --no-open   # API on :8080
+cd frontend && npm install && npm run dev                             # UI on :5173 with hot reload
 ```
 
 Vite forwards `/api` to `:8080`. `samples/ai-support-workflow/` is a small AI support-desk example used by the tests and handy for trying things out.

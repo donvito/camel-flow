@@ -1,4 +1,4 @@
-# Camel Workflow Viewer
+# CamelFlow
 
 See how your **Apache Camel YAML** routes fit together, in a diagram anyone can follow.
 
@@ -11,10 +11,10 @@ It is a viewer only: it never changes your files.
 You need Java 17 or newer.
 
 ```bash
-mvn package                                               # builds target/camel-workflow-viewer.jar
+mvn package                                   # builds target/camelflow.jar
 
-java -jar target/camel-workflow-viewer.jar                # start empty, then open or drop YAML files
-java -jar target/camel-workflow-viewer.jar ./my-routes    # show a folder (or one file), refreshed on every save
+java -jar target/camelflow.jar                # start empty, then open or drop YAML files
+java -jar target/camelflow.jar ./my-routes    # show a folder (or one file), refreshed on every save
 ```
 
 Your browser opens at `http://127.0.0.1:8080/`.
@@ -24,7 +24,7 @@ Your browser opens at `http://127.0.0.1:8080/`.
 ## Options
 
 ```
-java -jar camel-workflow-viewer.jar [folder-or-file] [options]
+java -jar camelflow.jar [folder-or-file] [options]
 
   folder-or-file   Routes to load and watch (optional; without it the viewer starts empty)
   --port <n>       HTTP port (default 8080; the next free port is used if it is busy)

@@ -388,7 +388,7 @@ function Viewer({ config }: { config: Config }) {
       label: 'Help',
       items: [
         { label: 'Keyboard shortcuts', shortcut: '?', onSelect: () => setDialog('shortcuts') },
-        { label: 'About Camel Workflow Viewer', onSelect: () => setDialog('about') },
+        { label: 'About CamelFlow', onSelect: () => setDialog('about') },
       ],
     },
   ];
@@ -419,6 +419,7 @@ function Viewer({ config }: { config: Config }) {
           left={
             <div className="menubar-brand">
               <img src="/favicon.svg" alt="" />
+              <span className="menubar-name">CamelFlow</span>
             </div>
           }
           right={
@@ -499,7 +500,7 @@ function Viewer({ config }: { config: Config }) {
                 {!graph?.rootDir && (
                   <p className="muted small">
                     To watch a folder and refresh on every save, start with{' '}
-                    <span className="mono">java -jar camel-workflow-viewer.jar ./routes</span>
+                    <span className="mono">java -jar camelflow.jar ./routes</span>
                   </p>
                 )}
               </div>
