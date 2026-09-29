@@ -1,21 +1,37 @@
 # CamelFlow
 
-See how your **Apache Camel YAML** routes fit together, in a diagram anyone can follow.
+[![CI](https://github.com/donvito/camel-flow/actions/workflows/ci.yml/badge.svg)](https://github.com/donvito/camel-flow/actions/workflows/ci.yml)
+[![Latest release](https://img.shields.io/github/v/release/donvito/camel-flow?sort=semver)](https://github.com/donvito/camel-flow/releases/latest)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
 
-Each route is one card, showing what starts it and what it uses. Lines show how routes call each other (`direct`, `seda`, Kafka, JMS…), and the systems they touch (AI models, databases, APIs, storage, apps) appear as named nodes. This is useful when you need to walk executives through an integration or an AI workflow. Developers can switch to the **Technical** view or open any route **step by step**.
+CamelFlow draws your **Apache Camel YAML** routes as a simple map.
 
-It is a viewer only: it never changes your files.
+- Each route is a box.
+- Arrows show which routes call each other.
+- Icons show the systems each route uses: AI models, databases, APIs, messaging.
+
+Anyone can read it, with no Camel knowledge needed. Developers can switch to the **Technical** view for the details.
+
+CamelFlow only reads your files. It never changes them.
 
 ## Quick start
 
 You need Java 17 or newer.
 
-```bash
-mvn package                                   # builds target/camelflow.jar
+**Download** `camelflow.jar` from the [latest release](https://github.com/donvito/camel-flow/releases/latest), then:
 
-java -jar target/camelflow.jar                # start empty, then open or drop YAML files
-java -jar target/camelflow.jar ./my-routes    # show a folder (or one file), refreshed on every save
+```bash
+java -jar camelflow.jar                # start empty, then open or drop YAML files
+java -jar camelflow.jar ./my-routes    # show a folder (or one file), refreshed on every save
 ```
+
+**Or run it with [JBang](https://www.jbang.dev/)**, with no manual download:
+
+```bash
+jbang camelflow@donvito/camel-flow ./my-routes
+```
+
+**Or build it yourself** with `mvn package`, which writes `target/camelflow.jar` ([development guide](docs/development.md)).
 
 Your browser opens at `http://127.0.0.1:8080/`.
 - **Started empty:** add files with **File › Open YAML files…** (⌘/Ctrl+O) or by dragging them onto the window.
@@ -47,6 +63,12 @@ java -jar camelflow.jar [folder-or-file] [options]
 - [Supported YAML](docs/supported-yaml.md): what is read, how connections are drawn, limitations
 - [Development](docs/development.md): building, dev mode, project layout, HTTP API, tests
 
+- [Changelog](CHANGELOG.md)
+
 ## Author
 
 **Melvin Vivas** · [GitHub](https://github.com/donvito/) · [AI Backends](https://aibackends.com/)
+
+## License
+
+[Apache License 2.0](LICENSE). Apache Camel is a trademark of the Apache Software Foundation. CamelFlow is an independent project.

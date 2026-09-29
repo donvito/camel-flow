@@ -74,3 +74,31 @@ When a new Camel version adds EIPs:
 1. Replace `src/test/resources/schema/camelYamlDsl.json` with the new file from `dsl/camel-yaml-dsl/camel-yaml-dsl/src/generated/resources/schema/` in the Camel repository.
 2. Run `mvn -Dskip.frontend test`. `CamelYamlKeysSyncTest` lists exactly what changed.
 3. Update `src/main/resources/camel-yaml-keys.json` to match. If a new EIP carries an endpoint `uri`, add it to endpoint extraction in `CamelYamlParser`.
+
+## Versioning
+
+The version lives in one place: the `revision` property in `pom.xml`. It is `0.1.0-SNAPSHOT` for local builds, and a release build sets it from the git tag (`-Drevision=0.1.0`). The version is written into the jar's manifest and shown in **Help › About** and the startup banner.
+
+## Releasing
+
+Releases are built by GitHub Actions (`.github/workflows/release.yml`) when a version tag is pushed.
+
+1. Move the items under `## [Unreleased]` in `CHANGELOG.md` into a new `## [x.y.z]` section, and update the links at the bottom.
+2. Commit, then tag and push:
+
+   ```bash
+   git tag v0.2.0
+   git push origin main v0.2.0
+   ```
+
+3. The workflow then:
+   - builds and tests with `-Drevision=0.2.0`;
+   - checks that the jar reports that version;
+   - publishes a GitHub Release with `camelflow.jar` attached, using that version's CHANGELOG section as the notes.
+
+   A tag with a suffix, such as `v0.2.0-rc.1`, is published as a pre-release.
+
+The JBang alias in `jbang-catalog.json` always points to the jar on the latest release, so `jbang camelflow@donvito/camel-flow` picks up new versions without any change.
+
+Every push to `main` and every pull request runs `.github/workflows/ci.yml`, which builds and tests on Java 17 and 21 and keeps the jar as a downloadable build artifact for 7 days.
+

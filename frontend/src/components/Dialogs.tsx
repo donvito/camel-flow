@@ -155,6 +155,8 @@ export function AboutDialog({ onClose, version, rootDir }: { onClose: () => void
         </dd>
         <dt>Version</dt>
         <dd>{version}</dd>
+        <dt>License</dt>
+        <dd>Apache License 2.0</dd>
         <dt>Folder</dt>
         <dd className={rootDir ? 'mono' : 'muted'}>{rootDir || 'None (files opened in the browser)'}</dd>
       </dl>

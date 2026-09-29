@@ -1,0 +1,11 @@
+{
+  "catalogs": {},
+  "aliases": {
+    "camelflow": {
+      "script-ref": "https://github.com/donvito/camel-flow/releases/latest/download/camelflow.jar",
+      "description": "CamelFlow: see how your Apache Camel YAML routes connect, as a simple diagram",
+      "java": "17+"
+    }
+  },
+  "templates": {}
+}

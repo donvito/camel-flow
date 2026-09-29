@@ -6,11 +6,33 @@
 
   <groupId>io.camelviewer</groupId>
   <artifactId>camelflow</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <!-- Set by the release workflow from the git tag: mvn package -Drevision=0.1.0 -->
+  <version>${revision}</version>
   <name>CamelFlow</name>
-  <description>High-level viewer for Apache Camel YAML DSL routes</description>
+  <description>See how your Apache Camel YAML routes connect, as a simple diagram</description>
+  <url>https://github.com/donvito/camel-flow</url>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Melvin Vivas</name>
+      <url>https://github.com/donvito</url>
+    </developer>
+  </developers>
+
+  <scm>
+    <url>https://github.com/donvito/camel-flow</url>
+    <connection>scm:git:https://github.com/donvito/camel-flow.git</connection>
+  </scm>
 
   <properties>
+    <revision>0.1.0-SNAPSHOT</revision>
     <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jackson.version>2.19.0</jackson.version>
@@ -40,6 +62,20 @@
 
   <build>
     <finalName>camelflow</finalName>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <!-- ship the license with the jar -->
+      <resource>
+        <directory>${project.basedir}</directory>
+        <targetPath>META-INF</targetPath>
+        <includes>
+          <include>LICENSE</include>
+          <include>NOTICE</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
