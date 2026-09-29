@@ -6,6 +6,8 @@
 
 CamelFlow is a viewer for Apache Camel YAML routes. It shows your routes and how they connect as an easy-to-read diagram.
 
+![CamelFlow showing a receipt-processing workflow: routes as cards, connected to OpenAI, a SQL database and the file system](docs/images/camelflow.png)
+
 ## Quick start
 
 You need Java 17 or newer.
