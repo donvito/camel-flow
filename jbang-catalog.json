@@ -3,7 +3,7 @@
   "aliases": {
     "camelflow": {
       "script-ref": "https://github.com/donvito/camel-flow/releases/latest/download/camelflow.jar",
-      "description": "CamelFlow: see how your Apache Camel YAML routes connect, as a simple diagram",
+      "description": "CamelFlow: a viewer for Apache Camel YAML routes that shows how they connect as a diagram",
       "java": "17+"
     }
   },

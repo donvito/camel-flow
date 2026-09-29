@@ -9,7 +9,7 @@
   <!-- Set by the release workflow from the git tag: mvn package -Drevision=0.1.0 -->
   <version>${revision}</version>
   <name>CamelFlow</name>
-  <description>See how your Apache Camel YAML routes connect, as a simple diagram</description>
+  <description>A viewer for Apache Camel YAML routes that shows how they connect as an easy-to-read diagram</description>
   <url>https://github.com/donvito/camel-flow</url>
 
   <licenses>

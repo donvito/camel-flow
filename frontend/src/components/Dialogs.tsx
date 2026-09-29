@@ -137,7 +137,7 @@ export function ShortcutsDialog({ onClose }: { onClose: () => void }) {
 export function AboutDialog({ onClose, version, rootDir }: { onClose: () => void; version: string; rootDir: string }) {
   return (
     <Dialog title="About CamelFlow" onClose={onClose}>
-      <p>High-level diagrams of Apache Camel YAML routes, for explaining integrations to everyone.</p>
+      <p>A viewer for Apache Camel YAML routes. It shows your routes and how they connect as an easy-to-read diagram.</p>
       <dl className="kv">
         <dt>Author</dt>
         <dd>Melvin Vivas</dd>

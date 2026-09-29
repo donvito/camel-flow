@@ -20,7 +20,7 @@ import java.util.concurrent.CountDownLatch;
 public final class Main {
 
     private static final String USAGE = """
-            CamelFlow — high-level diagrams of Apache Camel YAML routes
+            CamelFlow — a viewer for Apache Camel YAML routes
 
             Usage: java -jar camelflow.jar [folder-or-file] [options]
 

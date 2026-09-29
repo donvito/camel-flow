@@ -4,15 +4,7 @@
 [![Latest release](https://img.shields.io/github/v/release/donvito/camel-flow?sort=semver)](https://github.com/donvito/camel-flow/releases/latest)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
 
-CamelFlow draws your **Apache Camel YAML** routes as a simple map.
-
-- Each route is a box.
-- Arrows show which routes call each other.
-- Icons show the systems each route uses: AI models, databases, APIs, messaging.
-
-Anyone can read it, with no Camel knowledge needed. Developers can switch to the **Technical** view for the details.
-
-CamelFlow only reads your files. It never changes them.
+CamelFlow is a viewer for Apache Camel YAML routes. It shows your routes and how they connect as an easy-to-read diagram.
 
 ## Quick start
 
