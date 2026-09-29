@@ -1,0 +1,20 @@
+- route:
+    id: urgent-responder
+    description: Urgent ticket responder
+    from:
+      uri: seda:urgent
+      steps:
+        - to:
+            uri: openai:chat-completion
+            parameters:
+              model: gpt-4o
+              systemMessage: Draft a short, empathetic first response to this urgent ticket.
+        - circuitBreaker:
+            steps:
+              - to:
+                  uri: https://events.pagerduty.com/v2/enqueue
+            onFallback:
+              steps:
+                - to: slack:#oncall
+        - to:
+            uri: slack:#support-urgent

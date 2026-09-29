@@ -1,0 +1,19 @@
+- route:
+    id: daily-summary
+    description: Daily AI summary for leadership
+    from:
+      uri: cron:daily-summary
+      parameters:
+        schedule: "0 0 8 * * ?"
+      steps:
+        - to:
+            uri: sql:select priority, count(*) as total from tickets group by priority
+        - to:
+            uri: langchain4j-chat:summarizer
+        - setHeader:
+            name: subject
+            constant: Daily support summary
+        - to:
+            uri: smtp:mail.example.com
+            parameters:
+              to: leadership@example.com

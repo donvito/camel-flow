@@ -1,0 +1,38 @@
+- route:
+    id: ticket-intake
+    description: Ticket intake & AI triage
+    from:
+      uri: direct:intake
+      steps:
+        - log: "Received ticket ${body}"
+        - setHeader:
+            name: receivedAt
+            simple: "${date:now:yyyy-MM-dd'T'HH:mm:ss}"
+        - to:
+            uri: langchain4j-chat:classifier
+            parameters:
+              chatOperation: CHAT_SINGLE_MESSAGE
+        - unmarshal:
+            json: {}
+        - wireTap:
+            uri: direct:audit
+        - choice:
+            when:
+              - description: Urgent
+                simple: "${body[priority]} == 'HIGH'"
+                steps:
+                  - to: seda:urgent
+            otherwise:
+              description: Normal
+              steps:
+                - to:
+                    uri: kafka:tickets.normal
+
+- route:
+    id: get-ticket
+    description: Ticket lookup
+    from:
+      uri: direct:get-ticket
+      steps:
+        - to:
+            uri: sql:select * from tickets where id = :#${header.id}

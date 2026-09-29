@@ -1,0 +1,13 @@
+# Public API for the AI support desk
+- rest:
+    path: /api
+    description: Support desk API
+    post:
+      - path: /tickets
+        description: Submit a support ticket
+        to: direct:intake
+    get:
+      - path: /tickets/{id}
+        description: Look up a ticket
+        to:
+          uri: direct:get-ticket

@@ -1,0 +1,20 @@
+# Build output
+target/
+frontend/dist/
+*.tsbuildinfo
+
+# Dependencies and the Node runtime Maven downloads
+frontend/node_modules/
+frontend/node/
+
+# Logs and local environment
+*.log
+npm-debug.log*
+.env
+.env.*
+
+# IDE / OS
+.idea/
+*.iml
+.vscode/
+.DS_Store

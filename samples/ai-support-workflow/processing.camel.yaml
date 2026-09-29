@@ -1,0 +1,43 @@
+- route:
+    id: normal-processor
+    description: Standard ticket processing
+    from:
+      uri: kafka:tickets.normal
+      parameters:
+        groupId: support-desk
+      steps:
+        - doTry:
+            steps:
+              - to:
+                  uri: sql:insert into tickets (id, subject, priority) values (:#${body[id]}, :#${body[subject]}, :#${body[priority]})
+              - to:
+                  uri: aws2-s3:ticket-archive
+              - toD:
+                  uri: http:${header.callbackUrl}
+            doCatch:
+              - exception:
+                  - java.lang.Exception
+                steps:
+                  - to: direct:dead-letter
+
+- route:
+    id: audit-trail
+    description: Audit trail
+    from:
+      uri: direct:audit
+      steps:
+        - to:
+            uri: mongodb:auditDb
+            parameters:
+              database: support
+              collection: audit
+              operation: insert
+        - log: "Audited ${header.CamelMessageHistory}"
+
+- route:
+    id: dead-letter
+    description: Failed ticket parking
+    from:
+      uri: direct:dead-letter
+      steps:
+        - to: kafka:tickets.dlq
