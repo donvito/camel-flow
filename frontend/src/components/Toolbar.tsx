@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, useState, type ReactNode } from 'react';
+import { forwardRef } from 'react';
 import {
   ArrowDownUp,
   ArrowLeft,
@@ -8,47 +8,16 @@ import {
   FileCode2,
   Layers,
   Maximize,
-  Monitor,
-  Moon,
   PanelLeft,
   Presentation,
   RotateCcw,
   Search,
   SlidersHorizontal,
-  Sun,
   X,
 } from 'lucide-react';
 import { useSettings } from '../settings';
-
-function Popover({ button, children, label }: { button: ReactNode; children: ReactNode; label: string }) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!open) return;
-    const close = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as globalThis.Node)) setOpen(false);
-    };
-    const esc = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
-    window.addEventListener('mousedown', close);
-    window.addEventListener('keydown', esc);
-    return () => {
-      window.removeEventListener('mousedown', close);
-      window.removeEventListener('keydown', esc);
-    };
-  }, [open]);
-  return (
-    <div className="popover-wrap" ref={ref}>
-      <button className={`tb-btn ${open ? 'on' : ''}`} onClick={() => setOpen(!open)} title={label} aria-label={label}>
-        {button}
-      </button>
-      {open && (
-        <div className="popover" role="dialog" aria-label={label}>
-          {children}
-        </div>
-      )}
-    </div>
-  );
-}
+import { Popover } from './Popover';
+import { ThemePicker } from './ThemePicker';
 
 function Sep() {
   return <span className="tb-sep" aria-hidden />;
@@ -67,8 +36,6 @@ export const Toolbar = forwardRef<HTMLInputElement, {
   onFit: () => void;
 }>(function Toolbar(props, searchRef) {
   const s = useSettings();
-  const themeIcon = s.theme === 'system' ? <Monitor size={16} /> : s.theme === 'light' ? <Sun size={16} /> : <Moon size={16} />;
-  const nextTheme = s.theme === 'system' ? 'light' : s.theme === 'light' ? 'dark' : 'system';
   const fileName = props.fileFilter?.replace(/^uploaded\//, '');
 
   return (
@@ -167,9 +134,7 @@ export const Toolbar = forwardRef<HTMLInputElement, {
         <button className="tb-btn" onClick={props.onReset} title="Reset layout (forget moved cards)" aria-label="Reset layout">
           <RotateCcw size={16} />
         </button>
-        <button className="tb-btn" onClick={() => s.setTheme(nextTheme)} title={`Theme: ${s.theme} (T)`} aria-label="Toggle theme">
-          {themeIcon}
-        </button>
+        <ThemePicker />
         <Sep />
         <button className="tb-btn" onClick={props.onExport} title="Export PNG…" aria-label="Export PNG">
           <Download size={16} />

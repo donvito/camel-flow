@@ -82,7 +82,7 @@ A step that calls another route has an **Open flow** link to that route. The too
   - **View › Zoom**.
 - **Move cards** by dragging. Positions are remembered per folder, file and view, and are kept when files reload. **Layout › Reset layout** re-arranges everything.
 - **Direction:** left → right or top → bottom (`L`).
-- **Theme:** **View › Theme** (System, Light or Dark), the toolbar icon, or `T`. System follows your OS setting.
+- **Theme:** use the palette icon in the toolbar for previews, or **View › Theme**. Choose Light, Dark, Midnight (violet), Ocean (blue), Forest (green), or Rose (pink). System follows your OS setting. Your choice is saved in this browser; `T` cycles through all themes. Themes color the entire viewer, including cards, YAML, and PNG exports.
 - **Search** (`/`) highlights matching routes, systems and steps.
 
 ## Exporting a PNG
@@ -112,7 +112,7 @@ Single-key shortcuts are ignored while you're typing in a field. Press `?` in th
 | `I` | Show / hide internal steps |
 | `G` | Group routes by file |
 | `M` | Show / hide the minimap |
-| `T` | Cycle theme: system → light → dark |
+| `T` | Cycle through themes |
 | `P` | Presentation mode |
 | `/` | Search |
 | `+` `−` `0` | Zoom in, zoom out, fit to screen |

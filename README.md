@@ -48,7 +48,7 @@ java -jar camelflow.jar [folder-or-file] [options]
 - **Executive / Technical:** plain language for presentations, or route ids, URIs, step trees and YAML for developers. Press `V` to switch.
 - **Explorer:** a file tree on the left. Click a file to see only its routes; `</>` shows its YAML.
 - **Step-by-step flow:** double-click a route to see every step, branch and loop.
-- **Drag, zoom, dark mode, PNG export:** the export can have a transparent background, and card positions are remembered.
+- **Drag, zoom, themes, PNG export:** pick Light, Dark, Midnight, Ocean, Forest, or Rose from the palette icon. Exports can have a transparent background, and card positions are remembered.
 - **Keyboard:** press `?` in the app to list all shortcuts.
 
 ## Guides
