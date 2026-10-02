@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { load, save } from './storage';
+import { normalizeTheme, resolveTheme, THEMES, type ColorMode, type ThemeId } from './themes';
 import type { Direction, ThemeChoice, ViewMode } from './types';
 
 /** Viewer-wide display settings. View mode resolves as URL (?view=) › localStorage › server default. */
@@ -8,7 +9,8 @@ export interface Settings {
   setView: (v: ViewMode) => void;
   theme: ThemeChoice;
   setTheme: (t: ThemeChoice) => void;
-  resolvedTheme: 'light' | 'dark';
+  resolvedTheme: ThemeId;
+  colorMode: ColorMode;
   direction: Direction;
   setDirection: (d: Direction) => void;
   showSystems: boolean;
@@ -69,7 +71,7 @@ function useSystemDark(): boolean {
 
 export function SettingsProvider({ defaultView, children }: { defaultView: ViewMode; children: ReactNode }) {
   const [view, setViewState] = useState<ViewMode>(() => urlView() ?? load<ViewMode | null>('cwv.view', null) ?? defaultView);
-  const [theme, setTheme] = usePersisted<ThemeChoice>('cwv.theme', 'system');
+  const [theme, setThemeState] = useState<ThemeChoice>(() => normalizeTheme(load<unknown>('cwv.theme', 'system')));
   const [direction, setDirection] = usePersisted<Direction>('cwv.direction', 'LR');
   const [showSystems, setShowSystems] = usePersisted('cwv.showSystems', true);
   const [internalOverride, setInternalOverride] = useState<boolean | null>(null);
@@ -80,7 +82,8 @@ export function SettingsProvider({ defaultView, children }: { defaultView: ViewM
   const [showLegend, setShowLegend] = usePersisted('cwv.legend', true);
   const [file, setFileState] = useState<string | null>(() => new URLSearchParams(window.location.search).get('file'));
   const systemDark = useSystemDark();
-  const resolvedTheme = theme === 'system' ? (systemDark ? 'dark' : 'light') : theme;
+  const resolvedTheme = resolveTheme(theme, systemDark);
+  const colorMode = THEMES[resolvedTheme].mode;
 
   useEffect(() => {
     document.documentElement.dataset.theme = resolvedTheme;
@@ -100,8 +103,12 @@ export function SettingsProvider({ defaultView, children }: { defaultView: ViewM
         }
       },
       theme,
-      setTheme,
+      setTheme: (t) => {
+        setThemeState(t);
+        save('cwv.theme', t);
+      },
       resolvedTheme,
+      colorMode,
       direction,
       setDirection,
       showSystems,

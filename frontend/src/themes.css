@@ -1,0 +1,244 @@
+/* Theme palettes keep the canvas, controls, diagrams, and export background in sync. */
+:root {
+  color-scheme: light;
+  --font: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace;
+
+  --bg: #f6f5f2;
+  --canvas-bg: var(--bg);
+  --panel: #ffffff;
+  --card: #ffffff;
+  --card-tech: #fbfbfa;
+  --text: #1c1f24;
+  --muted: #6a707a;
+  --border: #e2e0da;
+  --border-strong: #cfccc4;
+  --grid: #d9d6cf;
+  --accent: #e5672d;
+  --accent-soft: #fdeee6;
+  --accent-contrast: #27140b;
+  --focus: var(--accent);
+  --shadow: 0 1px 2px rgba(20, 20, 20, 0.05), 0 4px 14px rgba(20, 20, 20, 0.06);
+  --shadow-lg: 0 10px 40px rgba(20, 20, 20, 0.14);
+  --backdrop: rgba(0, 0, 0, 0.28);
+
+  --edge-call: #3d4652;
+  --edge-muted: #a3a8b0;
+  --edge-label: #3d4652;
+  --edge-label-bg: var(--card);
+  --minimap-route: var(--edge-call);
+
+  --cat-ai: #7c3aed;
+  --cat-messaging: #d97706;
+  --cat-database: #0f766e;
+  --cat-http: #2563eb;
+  --cat-file: #4d7c0f;
+  --cat-email: #e11d48;
+  --cat-saas: #c026d3;
+  --cat-cloud: #0284c7;
+  --cat-scheduler: #64748b;
+  --cat-internal: #52606d;
+  --cat-other: #6b7280;
+  --cat-unresolved: #dc2626;
+  --cat-dynamic: #a16207;
+  --cat-eip: var(--cat-internal);
+
+  --tooltip-bg: #22252b;
+  --tooltip-fg: #f4f4f5;
+}
+
+:root[data-theme='dark'],
+:root[data-theme='midnight'],
+:root[data-theme='ocean'] {
+  color-scheme: dark;
+  --bg: #15171b;
+  --panel: #1d2026;
+  --card: #22262d;
+  --card-tech: #1f2329;
+  --text: #e8e9eb;
+  --muted: #9aa0a9;
+  --border: #33373f;
+  --border-strong: #454a54;
+  --grid: #2c3037;
+  --accent: #f07b45;
+  --accent-soft: #3a2519;
+  --accent-contrast: #2a160c;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 14px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
+  --backdrop: rgba(0, 0, 0, 0.55);
+
+  --edge-call: #c3c8d0;
+  --edge-muted: #6c727c;
+  --edge-label: #d8dbe0;
+
+  --cat-ai: #a78bfa;
+  --cat-messaging: #fbbf24;
+  --cat-database: #2dd4bf;
+  --cat-http: #60a5fa;
+  --cat-file: #a3e635;
+  --cat-email: #fb7185;
+  --cat-saas: #e879f9;
+  --cat-cloud: #38bdf8;
+  --cat-scheduler: #94a3b8;
+  --cat-internal: #9aa5b1;
+  --cat-other: #9ca3af;
+  --cat-unresolved: #f87171;
+  --cat-dynamic: #facc15;
+
+  --tooltip-bg: #eceef1;
+  --tooltip-fg: #17191d;
+}
+
+:root[data-theme='midnight'] {
+  --bg: #171426;
+  --panel: #201c33;
+  --card: #29243e;
+  --card-tech: #252137;
+  --text: #f1edf9;
+  --muted: #b2a9c7;
+  --border: #3e3556;
+  --border-strong: #564a73;
+  --grid: #332b48;
+  --accent: #b6a0ff;
+  --accent-soft: #352a50;
+  --accent-contrast: #231739;
+  --shadow: 0 1px 2px rgba(7, 4, 18, 0.4), 0 4px 14px rgba(7, 4, 18, 0.3);
+  --shadow-lg: 0 10px 40px rgba(7, 4, 18, 0.55);
+
+  --edge-call: #c8bedc;
+  --edge-muted: #7c6d96;
+  --edge-label: #e0d8ef;
+
+  --cat-ai: #b7a0ff;
+  --cat-messaging: #e9c479;
+  --cat-database: #7edbc8;
+  --cat-http: #8cb7f1;
+  --cat-file: #bfdc88;
+  --cat-email: #f298b4;
+  --cat-saas: #dfa1ec;
+  --cat-cloud: #81cde7;
+  --cat-scheduler: #b4b5d5;
+  --cat-internal: #afa7c4;
+  --cat-other: #b4abc5;
+  --cat-unresolved: #ff9c9c;
+  --cat-dynamic: #dfca7a;
+
+  --tooltip-bg: #eee8fc;
+  --tooltip-fg: #211a34;
+}
+
+:root[data-theme='ocean'] {
+  --bg: #0c1b2a;
+  --panel: #12283a;
+  --card: #183247;
+  --card-tech: #152d40;
+  --text: #e7f4f7;
+  --muted: #9bbbc9;
+  --border: #2a475b;
+  --border-strong: #426477;
+  --grid: #223d50;
+  --accent: #66d9e8;
+  --accent-soft: #153d48;
+  --accent-contrast: #102d36;
+  --shadow: 0 1px 2px rgba(2, 12, 22, 0.4), 0 4px 14px rgba(2, 12, 22, 0.3);
+  --shadow-lg: 0 10px 40px rgba(2, 12, 22, 0.55);
+
+  --edge-call: #b0d5e0;
+  --edge-muted: #658c9e;
+  --edge-label: #d1eaf1;
+
+  --cat-ai: #b3a7f6;
+  --cat-messaging: #f0c575;
+  --cat-database: #65d9b7;
+  --cat-http: #80b8ff;
+  --cat-file: #b0d987;
+  --cat-email: #f698b1;
+  --cat-saas: #d7a2ee;
+  --cat-cloud: #6ddcef;
+  --cat-scheduler: #9cb7cb;
+  --cat-internal: #9fbcc9;
+  --cat-other: #a5bbc8;
+  --cat-unresolved: #ff9b98;
+  --cat-dynamic: #e5d07c;
+
+  --tooltip-bg: #e0f4f7;
+  --tooltip-fg: #102a3a;
+}
+
+:root[data-theme='forest'] {
+  --bg: #f2f5ed;
+  --panel: #fcfdf8;
+  --card: #ffffff;
+  --card-tech: #f5f8ef;
+  --text: #26372b;
+  --muted: #597061;
+  --border: #d9e1d1;
+  --border-strong: #b7c8af;
+  --grid: #d3dec9;
+  --accent: #38704b;
+  --accent-soft: #e3eedc;
+  --accent-contrast: #ffffff;
+  --shadow: 0 1px 2px rgba(29, 52, 29, 0.05), 0 4px 14px rgba(29, 52, 29, 0.06);
+  --shadow-lg: 0 10px 40px rgba(29, 52, 29, 0.14);
+  --backdrop: rgba(18, 35, 22, 0.28);
+
+  --edge-call: #48614f;
+  --edge-muted: #93a58d;
+  --edge-label: #3f5847;
+
+  --cat-ai: #7444a0;
+  --cat-messaging: #8c6215;
+  --cat-database: #2d7161;
+  --cat-http: #326aa3;
+  --cat-file: #577523;
+  --cat-email: #ba3155;
+  --cat-saas: #974398;
+  --cat-cloud: #24728d;
+  --cat-scheduler: #637266;
+  --cat-internal: #5b6b5f;
+  --cat-other: #646e64;
+  --cat-unresolved: #b53838;
+  --cat-dynamic: #856013;
+
+  --tooltip-bg: #263a2b;
+  --tooltip-fg: #fcfdf8;
+}
+
+:root[data-theme='rose'] {
+  --bg: #fbf2f4;
+  --panel: #fffafb;
+  --card: #ffffff;
+  --card-tech: #fdf6f8;
+  --text: #402b34;
+  --muted: #805f6e;
+  --border: #ebd7df;
+  --border-strong: #d8b6c5;
+  --grid: #ead1dc;
+  --accent: #a93f67;
+  --accent-soft: #f6e1e9;
+  --accent-contrast: #ffffff;
+  --shadow: 0 1px 2px rgba(67, 25, 44, 0.05), 0 4px 14px rgba(67, 25, 44, 0.06);
+  --shadow-lg: 0 10px 40px rgba(67, 25, 44, 0.14);
+  --backdrop: rgba(48, 17, 30, 0.28);
+
+  --edge-call: #735363;
+  --edge-muted: #b392a2;
+  --edge-label: #674454;
+
+  --cat-ai: #8453b8;
+  --cat-messaging: #956218;
+  --cat-database: #2e796c;
+  --cat-http: #476daa;
+  --cat-file: #687b30;
+  --cat-email: #b93d64;
+  --cat-saas: #a24a9e;
+  --cat-cloud: #347691;
+  --cat-scheduler: #806b85;
+  --cat-internal: #816775;
+  --cat-other: #7d6c77;
+  --cat-unresolved: #be3c46;
+  --cat-dynamic: #926a24;
+
+  --tooltip-bg: #432934;
+  --tooltip-fg: #fffafb;
+}

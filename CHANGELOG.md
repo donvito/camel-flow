@@ -4,6 +4,10 @@ Notable changes to CamelFlow. The format follows [Keep a Changelog](https://keep
 
 ## [Unreleased]
 
+### Added
+
+- Midnight, Ocean, Forest, and Rose themes, with a visual palette picker, saved preferences, and theme-aware PNG exports. The View menu and `T` shortcut include all themes.
+
 ## [0.1.0]
 
 First release.

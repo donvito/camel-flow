@@ -2,6 +2,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { Download, ExternalLink, X } from 'lucide-react';
 import type { ExportBackground, ExportOptions } from '../export';
 import { useSettings } from '../settings';
+import { themeName } from '../themes';
 import { formatShortcut } from './MenuBar';
 
 export function Dialog({ title, onClose, children, width = 420 }: { title: string; onClose: () => void; children: ReactNode; width?: number }) {
@@ -53,7 +54,7 @@ export function ExportDialog({ onClose, onExport }: { onClose: () => void; onExp
         <div className="seg small">
           {(['current', 'light', 'dark'] as const).map((t) => (
             <button key={t} className={theme === t ? 'on' : ''} onClick={() => setTheme(t)}>
-              {t === 'current' ? `Current (${resolvedTheme})` : t === 'light' ? 'Light' : 'Dark'}
+              {t === 'current' ? `Current (${themeName(resolvedTheme)})` : t === 'light' ? 'Light' : 'Dark'}
             </button>
           ))}
         </div>
@@ -103,7 +104,7 @@ export const SHORTCUTS: [string, string][] = [
   ['I', 'Show / hide internal steps'],
   ['G', 'Group routes by file'],
   ['M', 'Show / hide the minimap'],
-  ['T', 'Cycle theme: system → light → dark'],
+  ['T', 'Cycle through themes'],
   ['P', 'Presentation mode'],
   ['/', 'Search'],
   ['+  −  0', 'Zoom in, zoom out, fit to screen'],

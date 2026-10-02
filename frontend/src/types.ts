@@ -135,4 +135,4 @@ export interface Config {
 
 export type ViewMode = 'executive' | 'technical';
 export type Direction = 'LR' | 'TB';
-export type ThemeChoice = 'system' | 'light' | 'dark';
+export type { ThemeChoice } from './themes';

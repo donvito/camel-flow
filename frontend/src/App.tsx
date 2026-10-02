@@ -23,7 +23,8 @@ import { RouteNode } from './nodes/RouteNode';
 import { SystemNodeView } from './nodes/SystemNode';
 import { SettingsProvider, useSettings } from './settings';
 import { overviewToFlow, searchText } from './toFlow';
-import type { Config, Graph, ThemeChoice } from './types';
+import { nextTheme, THEME_CHOICES, themeName } from './themes';
+import type { Config, Graph } from './types';
 
 const overviewNodeTypes: NodeTypes = { route: RouteNode, system: SystemNodeView, api: ApiNode, fileGroup: FileGroupNode };
 const drillNodeTypes: NodeTypes = { step: StepNodeView, stepGroup: StepGroupNode, join: JoinNode };
@@ -223,7 +224,7 @@ function Viewer({ config }: { config: Config }) {
   const quickExport = (background: ExportBackground) =>
     doExport({ background, scale: 2 }).catch((e) => flash(String(e), 5000));
 
-  const cycleTheme = () => settings.setTheme(({ system: 'light', light: 'dark', dark: 'system' } as Record<ThemeChoice, ThemeChoice>)[settings.theme]);
+  const cycleTheme = () => settings.setTheme(nextTheme(settings.theme));
   const back = useCallback(() => {
     if (dialog) setDialog(null);
     else if (settings.presentation) settings.setPresentation(false);
@@ -351,9 +352,7 @@ function Viewer({ config }: { config: Config }) {
         { label: 'Group routes by file', checked: settings.groupByFile, shortcut: 'G', disabled: !!drillRoute, onSelect: () => settings.setGroupByFile(!settings.groupByFile) },
         { type: 'separator' },
         { type: 'header', label: 'Theme' },
-        { label: 'System', checked: settings.theme === 'system', radio: true, shortcut: 'T', onSelect: () => settings.setTheme('system') },
-        { label: 'Light', checked: settings.theme === 'light', radio: true, onSelect: () => settings.setTheme('light') },
-        { label: 'Dark', checked: settings.theme === 'dark', radio: true, onSelect: () => settings.setTheme('dark') },
+        ...THEME_CHOICES.map((theme) => ({ label: themeName(theme), checked: settings.theme === theme, radio: true, shortcut: theme === 'system' ? 'T' : undefined, onSelect: () => settings.setTheme(theme) })),
         { type: 'separator' },
         { label: 'Zoom in', shortcut: '+', onSelect: () => canvasApi.current?.zoomIn() },
         { label: 'Zoom out', shortcut: '−', onSelect: () => canvasApi.current?.zoomOut() },

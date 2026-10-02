@@ -147,7 +147,7 @@ export function FlowCanvas(props: {
         onPaneClick={() => props.onSelect(null)}
         nodeTypes={props.nodeTypes}
         edgeTypes={props.edgeTypes}
-        colorMode={settings.resolvedTheme}
+        colorMode={settings.colorMode}
         nodesDraggable
         nodesConnectable={false}
         edgesFocusable={false}
